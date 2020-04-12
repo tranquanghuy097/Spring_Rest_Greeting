@@ -23,12 +23,12 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
-    @GetMapping("/greeting_list")
+    @GetMapping("/greetings")
     public List<Greeting> getList() {
         return repo.getAllGreetings();
     }
 
-    @GetMapping("/greeting_id")
+    @GetMapping("/greetings/id")
     public Greeting getByID(@RequestParam(value = "id") Long id){
         return repo.findByID(id);
     }
