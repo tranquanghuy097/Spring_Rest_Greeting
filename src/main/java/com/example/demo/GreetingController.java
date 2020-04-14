@@ -4,10 +4,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
@@ -31,6 +28,16 @@ public class GreetingController {
     @GetMapping("/greetings/id")
     public Greeting getByID(@RequestParam(value = "id") Long id){
         return repo.findByID(id);
+    }
+
+    @PostMapping("/greetings/add")
+    public Greeting add(@RequestBody Greeting newGreeting){
+        return repo.save(newGreeting);
+    }
+
+    @DeleteMapping("/greetings/delete/id")
+    public void delete(@RequestParam(value = "id") Long id){
+        repo.delete(id);
     }
 
 

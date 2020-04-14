@@ -34,4 +34,13 @@ public class GreetingRepo {
         list.addAll(c);
         return list;
     }
+
+    public Greeting save(Greeting newGreeting){
+        greetingMap.put(newGreeting.getId(), newGreeting);
+        return newGreeting;
+    }
+
+    public void delete(Long id){
+        greetingMap.remove(id);
+    }
 }
